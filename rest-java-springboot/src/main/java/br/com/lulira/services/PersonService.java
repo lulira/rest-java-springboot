@@ -1,4 +1,4 @@
-package br.com.lulira;
+package br.com.lulira.services;
 
 
 import br.com.lulira.model.Person;

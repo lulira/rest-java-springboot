@@ -1,7 +1,7 @@
 package br.com.lulira.controllers;
 
 
-import br.com.lulira.PersonService;
+import br.com.lulira.services.PersonService;
 import br.com.lulira.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
