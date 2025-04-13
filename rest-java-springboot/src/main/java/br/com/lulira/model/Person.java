@@ -3,9 +3,12 @@ package br.com.lulira.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+// classe serializada permite que o objeto seja convertido em uma sequencia de bytes
 public class Person implements Serializable {
 
-    private static final long serialVerisionUID = 1L;
+
+    // identificador único usado durante o processo de serialização.
+    private static final long serialVersionUID = 1L;
 
     private long id;
     private String firstName;
