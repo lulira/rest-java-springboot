@@ -3,7 +3,7 @@ package br.com.lulira.unittests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.lulira.data.dto.PersonDTO;
+import br.com.lulira.data.dto.v1.PersonDTO;
 import br.com.lulira.model.Person;
 
 public class MockPerson {

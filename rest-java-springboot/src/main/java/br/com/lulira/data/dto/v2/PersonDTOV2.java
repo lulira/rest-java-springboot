@@ -1,11 +1,12 @@
-package br.com.lulira.data.dto;
+package br.com.lulira.data.dto.v2;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 // classe serializada permite que o objeto seja convertido em uma sequencia de bytes
 
-public class PersonDTO implements Serializable {
+public class PersonDTOV2 implements Serializable {
 
 
     // identificador único usado durante o processo de serialização.
@@ -21,7 +22,17 @@ public class PersonDTO implements Serializable {
 
     private String gender;
 
-    public PersonDTO() {
+    private Date birthDay;
+
+    public PersonDTOV2() {
+    }
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
     }
 
     public Long getId() {
@@ -64,16 +75,17 @@ public class PersonDTO implements Serializable {
         this.gender = gender;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PersonDTO person)) return false;
-        return getId() == person.getId() && Objects.equals(getFirstName(), person.getFirstName()) && Objects.equals(getLastName(), person.getLastName()) && Objects.equals(getAddress(), person.getAddress()) && Objects.equals(getGender(), person.getGender());
+        if (!(o instanceof PersonDTOV2 that)) return false;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(getGender(), that.getGender()) && Objects.equals(getBirthDay(), that.getBirthDay());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getAddress(), getGender());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getAddress(), getGender(), getBirthDay());
     }
 }
 
