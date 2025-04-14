@@ -4,19 +4,22 @@ package br.com.lulira.services;
 import br.com.lulira.exception.ResourceNotFoundException;
 import br.com.lulira.model.Person;
 import br.com.lulira.repository.PersonRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
 
 @Service
 public class PersonService {
 
     private AtomicLong counter = new AtomicLong();
-    private Logger logger = Logger.getLogger(PersonService.class.getName());
+
+    //Logger do lsf4j
+    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
 
     @Autowired
     PersonRepository repository;
@@ -28,19 +31,14 @@ public class PersonService {
 
         return repository.findAll();
 
+    }
 
-        }
-
-
-
-
-    public Person findById(Long id) {
+        public Person findById(Long id) {
 
         logger.info("finding one person!");
 
         return repository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("No records found this ID"));
-
     }
 
     public Person create(Person person) {
