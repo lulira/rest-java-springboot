@@ -1,7 +1,10 @@
 package br.com.lulira.services;
 
 
+import br.com.lulira.data.dto.PersonDTO;
 import br.com.lulira.exception.ResourceNotFoundException;
+import static br.com.lulira.mapper.ObjectMapper.parseListObjects;
+import static br.com.lulira.mapper.ObjectMapper.parseObject;
 import br.com.lulira.model.Person;
 import br.com.lulira.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -25,28 +28,32 @@ public class PersonService {
     PersonRepository repository;
 
 
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
 
         logger.info("finding all People!");
 
-        return repository.findAll();
+        return parseListObjects(repository.findAll(), PersonDTO.class);
 
     }
 
-        public Person findById(Long id) {
+        public PersonDTO findById(Long id) {
 
         logger.info("finding one person!");
 
-        return repository.findById(id)
+        var entity =  repository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("No records found this ID"));
+
+        return parseObject(entity, PersonDTO.class);
     }
 
-    public Person create(Person person) {
+    public PersonDTO create(PersonDTO person) {
         logger.info("Creating one Person");
-        return repository.save(person);
+
+        var entity =  parseObject(person, Person.class);
+        return parseObject(repository.save(entity), PersonDTO.class);
     }
 
-    public Person update(Person person) {
+    public PersonDTO update(PersonDTO person) {
         logger.info("updating one Person");
         Person entity =  repository.findById(person.getId())
                 .orElseThrow(()-> new ResourceNotFoundException("No records found this ID"));
@@ -56,7 +63,8 @@ public class PersonService {
         entity.setLastName(person.getLastName());
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
-        return repository.save(entity);
+
+        return parseObject(repository.save(entity), PersonDTO.class);
     }
 
     public void delete(Long id){
