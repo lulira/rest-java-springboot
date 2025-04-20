@@ -1,11 +1,13 @@
 package br.com.lulira.data.dto.v1;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 // classe serializada permite que o objeto seja convertido em uma sequencia de bytes
-
-public class PersonDTO implements Serializable {
+//extendendo RepresentationModel para instanciar o HATEOAS
+public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 
 
     // identificador único usado durante o processo de serialização.
