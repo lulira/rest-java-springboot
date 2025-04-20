@@ -20,12 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class PersonService {
 
-    private AtomicLong counter = new AtomicLong();
+
 
     //Logger do lsf4j
     private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
