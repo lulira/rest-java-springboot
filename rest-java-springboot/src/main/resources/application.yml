@@ -17,5 +17,14 @@ spring:
 logging:
   level:
     br.com.lulira: DEBUG
+spring-doc:
+  paths-to-match: /api/**/v1/**
+  swagger-ui:
+    path: /swagger-ui.html
+
+
+
+
+
 
 

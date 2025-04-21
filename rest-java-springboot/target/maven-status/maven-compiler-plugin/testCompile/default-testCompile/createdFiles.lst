@@ -1,3 +1,4 @@
+br\com\lulira\services\PersonServiceTest.class
 br\com\lulira\unittests\mapper\mocks\MockPerson.class
 br\com\lulira\StartupTests.class
 br\com\lulira\unittests\mapper\ObjectMapperTests.class

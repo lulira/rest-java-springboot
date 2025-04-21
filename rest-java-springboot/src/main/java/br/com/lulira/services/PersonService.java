@@ -4,7 +4,7 @@ package br.com.lulira.services;
 import br.com.lulira.controllers.PersonController;
 import br.com.lulira.data.dto.v1.PersonDTO;
 import br.com.lulira.data.dto.v2.PersonDTOV2;
-import br.com.lulira.exception.ResourceNotFoundException;
+import br.com.lulira.exception.RequiredObjectIsNullException;
 
 import static br.com.lulira.mapper.ObjectMapper.parseListObjects;
 import static br.com.lulira.mapper.ObjectMapper.parseObject;
@@ -51,7 +51,7 @@ persons.forEach(this::addHateoasLinks);
         logger.info("finding one person!");
 
         var entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No records found this ID"));
+                .orElseThrow(() -> new RequiredObjectIsNullException("No records found this ID"));
 
         var dto = parseObject(entity, PersonDTO.class);
         addHateoasLinks(dto);
@@ -77,7 +77,7 @@ persons.forEach(this::addHateoasLinks);
     public PersonDTO update(PersonDTO person) {
         logger.info("updating one Person");
         Person entity = repository.findById(person.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("No records found this ID"));
+                .orElseThrow(() -> new RequiredObjectIsNullException("No records found this ID"));
 
 
         entity.setFirstName(person.getFirstName());
@@ -95,7 +95,7 @@ persons.forEach(this::addHateoasLinks);
         logger.info("deleting one Person");
 
         Person entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No records found this ID"));
+                .orElseThrow(() -> new RequiredObjectIsNullException("No records found this ID"));
         repository.delete(entity);
 
     }
