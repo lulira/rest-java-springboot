@@ -2,7 +2,7 @@ package br.com.lulira.controllers;
 
 import br.com.lulira.controllers.docs.BookControllerDocs;
 import br.com.lulira.data.dto.v1.BookDTO;
-import br.com.lulira.services.BookService;
+import br.com.lulira.unittests.services.BookService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/book/v1")
 @Tag(name = "Book", description = "Endpoints for Managing Book")
@@ -25,6 +26,7 @@ public class BookController implements BookControllerDocs {
             })
     @Override
     public List<BookDTO> findAll() {
+
         return service.findAll();
     }
 
@@ -36,6 +38,7 @@ public class BookController implements BookControllerDocs {
     )
     @Override
     public BookDTO findById(@PathVariable("id") Long id) {
+
         return service.findById(id);
     }
 
@@ -51,6 +54,7 @@ public class BookController implements BookControllerDocs {
     )
     @Override
     public BookDTO create(@RequestBody BookDTO book) {
+
         return service.create(book);
     }
 
@@ -66,6 +70,7 @@ public class BookController implements BookControllerDocs {
     )
     @Override
     public BookDTO update(@RequestBody BookDTO book) {
+
         return service.update(book);
     }
 

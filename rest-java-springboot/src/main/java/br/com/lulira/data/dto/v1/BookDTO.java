@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 // classe serializada permite que o objeto seja convertido em uma sequencia de bytes
-
+// extends do representationModel adicionado para suportar HATEOAS
 public class BookDTO extends RepresentationModel<BookDTO> implements Serializable {
 
 

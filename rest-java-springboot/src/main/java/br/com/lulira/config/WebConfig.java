@@ -6,8 +6,15 @@ import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+
+/* classe WebConfig implementando WebMvcConfigurer
+* estabelecendo o conceito Content Negotiatiom
+* permitindo que o cliente solicite dados com formato especifico
+* e a resposta do servidor seja no mesmo formato.
+*/
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {

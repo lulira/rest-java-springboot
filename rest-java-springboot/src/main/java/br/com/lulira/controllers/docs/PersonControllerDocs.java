@@ -103,6 +103,5 @@ public interface PersonControllerDocs {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
             }
     )
-
     ResponseEntity<?> delete(@PathVariable("id") Long id);
 }

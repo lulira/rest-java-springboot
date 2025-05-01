@@ -1,4 +1,4 @@
-package br.com.lulira.services;
+package br.com.lulira.unittests.services;
 
 import br.com.lulira.data.dto.v1.PersonDTO;
 import br.com.lulira.model.Person;
